@@ -2,6 +2,8 @@
 #define SEVENSEGMENT_H
 
 #include "SingleDigitSevenSegment.h"
+#include "DebugLogger.h"
+
 
 class TwoDigitSevenSegment
 {
@@ -11,6 +13,7 @@ private:
     unsigned short number;
     SingleDigitSevenSegment digits[2];
     Adafruit_NeoPixel ledPixels;
+    DebugLogger logger = DebugLogger();
 
 
 public:

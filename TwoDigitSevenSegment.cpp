@@ -24,6 +24,8 @@ void TwoDigitSevenSegment::turnOn()
 
 void TwoDigitSevenSegment::turnOff()
 {
+    logger.logMessageToSerial("2Digit: turn off");
+
     for (int i=0; i<2; i++)
         digits[i].turnOff();
 }

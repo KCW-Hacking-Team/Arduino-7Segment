@@ -36,6 +36,8 @@ void SingleDigitSevenSegment::initializeSegments(
 
 void SingleDigitSevenSegment::turnOff()
 {
+    logger.logMessageToSerial("1Digit: turn off");
+
     for (short i=0; i<7; i++)
         segments[i].turnOff();
 }

@@ -2,6 +2,7 @@
 #define SINGLEDIGIT_H
 
 #include "BasicSegment.h"
+#include "DebugLogger.h"
 
 class SingleDigitSevenSegment //: public Segment
 {
@@ -9,6 +10,7 @@ private:
     BasicSegment segments[7];
     short segmentPosition[7] = {4,5,0,1,2,3,6}; // [2,5..] = segment a at pos 2 b at pos 5
     Adafruit_NeoPixel ledArray;
+    DebugLogger logger = DebugLogger();
     unsigned short currentNumber;
 
     void initializeSegments(
