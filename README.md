@@ -18,6 +18,5 @@ Custom Arduino Library for creating 7-Segment displays using addressable RGB str
 ### Run Tests
  
  1. Clone Repo
- 2. Run `cmake .`
- 3. Run `make`
- 4. Run `ctest`
+ 2. Run `chmod +x buildAndTest.sh`
+ 3. Run `./buildAndTest.sh`
