@@ -4,9 +4,8 @@
 
 struct defaultSingleDigit : SingleDigitSevenSegment
 {
-    defaultSingleDigit() : SingleDigitSevenSegment(
-        Adafruit_NeoPixel(10, 1, NEO_GRB + NEO_KHZ800), 1,1
-    )
+    Adafruit_NeoPixel testPixel = Adafruit_NeoPixel(10, 1, NEO_GRB + NEO_KHZ800);
+    defaultSingleDigit() : SingleDigitSevenSegment(testPixel, 1,1)
     {
     }
 };

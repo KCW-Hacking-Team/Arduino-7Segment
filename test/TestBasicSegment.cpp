@@ -3,10 +3,8 @@
 
 struct defaultBasicSegment : BasicSegment
 {
-
-    defaultBasicSegment() : BasicSegment(
-        Adafruit_NeoPixel(10, 1, NEO_GRB + NEO_KHZ800), 4,5
-        )
+    Adafruit_NeoPixel testPixel = Adafruit_NeoPixel(10, 1, NEO_GRB + NEO_KHZ800);
+    defaultBasicSegment() : BasicSegment(testPixel, 4,5)
     {
     }
 };

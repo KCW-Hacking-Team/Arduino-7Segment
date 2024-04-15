@@ -1,1 +1,9 @@
-Build/*
+*
+
+!CMakeLists.txt
+! *.cpp
+! *.h
+! test/*
+! Import/*
+! .git*
+! README.md
