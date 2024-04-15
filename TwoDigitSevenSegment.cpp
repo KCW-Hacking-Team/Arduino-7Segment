@@ -9,11 +9,22 @@ TwoDigitSevenSegment::TwoDigitSevenSegment(unsigned short dataPin, short segment
     digits[1] = SingleDigitSevenSegment(ledPixels,segmentLength*7,segmentLength);
 }
 
+void TwoDigitSevenSegment::begin()
+{
+    ledPixels.begin();
+}
+
+void TwoDigitSevenSegment::refreshDisplay()
+{
+    ledPixels.show();
+}
+
 void TwoDigitSevenSegment::setNumber(unsigned short number)
 {
     this->number = number;
     digits[1].setNumber(int(number/10));
     digits[0].setNumber(number%10);
+    refreshDisplay();
 }
 
 void TwoDigitSevenSegment::turnOn()
@@ -24,7 +35,7 @@ void TwoDigitSevenSegment::turnOn()
 
 void TwoDigitSevenSegment::turnOff()
 {
-    logger.logMessageToSerial("2Digit: turn off");
+    logger.logLineToSerial("2Digit: turn off");
 
     for (int i=0; i<2; i++)
         digits[i].turnOff();

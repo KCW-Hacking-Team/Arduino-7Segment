@@ -27,6 +27,8 @@ public:
         unsigned short blue, 
         unsigned short brightness
         );
+    void begin();
+    void refreshDisplay();
     short getNumber();
     SingleDigitSevenSegment* getDigits();
 };

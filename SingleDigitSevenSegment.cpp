@@ -29,14 +29,14 @@ void SingleDigitSevenSegment::initializeSegments(
 {
     for (short i=0; i<7; i++)
     {
-        unsigned short currentStartLed = startLed + (i+1)*segmentLength;
+        unsigned short currentStartLed = startLed + i*segmentLength;
         segments[i] = BasicSegment(ledArray, currentStartLed, segmentLength);
     }
 }
 
 void SingleDigitSevenSegment::turnOff()
 {
-    logger.logMessageToSerial("1Digit: turn off");
+    logger.logLineToSerial("1Digit: turn off");
 
     for (short i=0; i<7; i++)
         segments[i].turnOff();
@@ -100,7 +100,6 @@ void SingleDigitSevenSegment::setNumber(unsigned short number)
         }
         turnOnSegments(segmentsToTurnOn);
     }
-    ledArray.show();
 }
 
 void SingleDigitSevenSegment::turnOnSegments(bool segmentList[7])

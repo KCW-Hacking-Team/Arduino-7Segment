@@ -7,6 +7,8 @@
 #include "test/Placeholders/Adafruit.h"
 #endif
 
+#include "DebugLogger.h"
+
 class rgbColors
 {
 public:
@@ -47,6 +49,7 @@ private:
     short startLed;
     bool state;
     Adafruit_NeoPixel ledArray;
+    DebugLogger logger = DebugLogger();
     rgbColors colors;
     short brightness = 200;
 

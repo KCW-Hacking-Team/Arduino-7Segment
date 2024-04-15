@@ -1,4 +1,5 @@
 #include "BasicSegment.h"
+#include <stdio.h>
 
 BasicSegment::BasicSegment(Adafruit_NeoPixel& ledArray, short startLed, short segmentLength)
 {
@@ -14,6 +15,9 @@ void BasicSegment::turnOff()
         state = false;
         for (short i = startLed; i < (startLed + segmentLength); i++)
         {
+            logger.logTextToSerial("setting pixel ");
+            logger.logNumberToSerial(i);
+            logger.logLineToSerial(" to color 0,0,0");
             ledArray.setPixelColor(i, ledArray.Color(0,0,0));
         }
     }
@@ -46,6 +50,7 @@ void BasicSegment::setBrightness(short newBrightness)
         if (ledArray.getBrightness() != brightness)
             ledArray.setBrightness(brightness);
     }
+
 }
 
 void BasicSegment::setColors(unsigned short red, unsigned short green, unsigned short blue)

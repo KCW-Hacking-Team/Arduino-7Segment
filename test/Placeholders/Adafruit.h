@@ -12,4 +12,5 @@ public:
     void setBrightness(int color) {};
     void show() {};
     int getBrightness() {return 0;};
+    void begin() {};
 };
