@@ -10,65 +10,49 @@ BasicSegment::BasicSegment(Adafruit_NeoPixel& ledArray, short startLed, short se
 
 void BasicSegment::turnOff()
 {
-    if(state)
+    state = false;
+    for (short i = startLed; i < (startLed + segmentLength); i++)
     {
-        state = false;
-        for (short i = startLed; i < (startLed + segmentLength); i++)
-        {
-            logger.logTextToSerial("setting pixel ");
-            logger.logNumberToSerial(i);
-            logger.logLineToSerial(" to color 0,0,0");
-            ledArray.setPixelColor(i, ledArray.Color(0,0,0));
-        }
+        ledArray.setPixelColor(i, ledArray.Color(0,0,0));
     }
 }
 
 void BasicSegment::turnOn()
-{   
-    if(!state)
+{ 
+    state = true;
+    for (short i = startLed; i < (startLed + segmentLength); i++)
     {
-        state = true;
-        for (short i = startLed; i < (startLed + segmentLength); i++)
-        {
-            ledArray.setPixelColor(i, 
-                ledArray.Color(
-                    colors.red,
-                    colors.green,
-                    colors.blue
-                )
-            );
-        }
-        ledArray.setBrightness(brightness);
+        ledArray.setPixelColor(i, 
+            ledArray.Color(
+                colors.red,
+                colors.green,
+                colors.blue
+            )
+        );
     }
+    ledArray.setBrightness(brightness);
 }
 
 void BasicSegment::setBrightness(short newBrightness)
 {
-    if (brightness != newBrightness)
-    {
-        brightness = newBrightness;
-        if (ledArray.getBrightness() != brightness)
-            ledArray.setBrightness(brightness);
-    }
-
+    brightness = newBrightness;
+    if (ledArray.getBrightness() != brightness)
+        ledArray.setBrightness(brightness);
 }
 
 void BasicSegment::setColors(unsigned short red, unsigned short green, unsigned short blue)
 {
     rgbColors newColor = rgbColors(red, green, blue);
-    if (colors != newColor)
+    colors = newColor;
+    for (short i = startLed; i < (startLed + segmentLength); i++)
     {
-        colors = newColor;
-        for (short i = startLed; i < (startLed + segmentLength); i++)
-        {
-            ledArray.setPixelColor(i, 
-                ledArray.Color(
-                    colors.red,
-                    colors.green,
-                    colors.blue
-                )
-            );
-        }
+        ledArray.setPixelColor(i, 
+            ledArray.Color(
+                colors.red,
+                colors.green,
+                colors.blue
+            )
+        );
     }
 }
 

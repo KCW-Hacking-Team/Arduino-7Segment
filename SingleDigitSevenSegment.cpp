@@ -36,8 +36,6 @@ void SingleDigitSevenSegment::initializeSegments(
 
 void SingleDigitSevenSegment::turnOff()
 {
-    logger.logLineToSerial("1Digit: turn off");
-
     for (short i=0; i<7; i++)
         segments[i].turnOff();
 }
@@ -83,7 +81,6 @@ void SingleDigitSevenSegment::setNumber(unsigned short number)
                 segmentsToTurnOn[4] = false;
                 break;
             case 6:
-                segmentsToTurnOn[0] = false;
                 segmentsToTurnOn[1] = false;
                 break;
             case 7:
@@ -94,7 +91,6 @@ void SingleDigitSevenSegment::setNumber(unsigned short number)
             case 8:
                 break;
             case 9:
-                segmentsToTurnOn[3] = false;
                 segmentsToTurnOn[4] = false;
                 break;
         }
@@ -107,9 +103,13 @@ void SingleDigitSevenSegment::turnOnSegments(bool segmentList[7])
     for (short i=0; i<7; i++)
     {
         if (segmentList[i])
+        {
             segments[segmentPosition[i]].turnOn();
+        }
         else
+        {
             segments[segmentPosition[i]].turnOff();
+        }
     }
 }
 
